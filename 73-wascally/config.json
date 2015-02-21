@@ -1,0 +1,20 @@
+{
+  "connection": {
+    "user": "test",
+    "pass": "password",
+    "server": "localhost",
+    "vhost": "test-app"
+  },
+
+  "exchanges":[
+    {"name": "sample-ex.1", "type": "direct"}
+  ],
+
+  "queues":[
+    {"name": "sample-q.1"}
+  ],
+
+  "bindings":[
+    {"exchange": "sample-ex.1", "target": "sample-q.1"}
+  ]
+}
