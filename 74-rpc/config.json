@@ -7,14 +7,14 @@
   },
 
   "exchanges":[
-    {"name": "sample-ex.1", "type": "direct"}
+    {"name": "sample-req-ex", "type": "direct"}
   ],
 
   "queues":[
-    {"name": "sample-q.1"}
+    {"name": "sample-req"}
   ],
 
   "bindings":[
-    {"exchange": "sample-ex.1", "target": "sample-q.1"}
+    {"exchange": "sample-req-ex", "target": "sample-req"}
   ]
 }
