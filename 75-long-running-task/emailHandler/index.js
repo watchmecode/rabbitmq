@@ -1,6 +1,7 @@
 var rabbit = require("wascally");
-var rabbitConfig = require("rabbitConfig");
 var mailer = require("mailer");
+var epa = require("epa").getEnvironment();
+var rabbitConfig = epa.get("rabbitmq");
 
 rabbit
   .configure(rabbitConfig)
@@ -21,16 +22,16 @@ function waitForEmailRequest(){
   console.log("wiating for email send request");
 
   rabbit.handle("email.send", function(msg){
-    console.log("got email send request");
-    console.log(msg.body);
+    var emailConfig = msg.body;
 
-    mailer.send(msg.body, function(err){
+    mailer.send(emailConfig, function(err){
       if (err) { return reportError(err); }
 
-      console.log("sent email!");
+      console.log("sent the email!");
+      console.log(emailConfig);
+
       msg.ack();
     });
-
   });
 
   rabbit.startSubscription("email.q");

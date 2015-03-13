@@ -25,7 +25,9 @@ var mailer = {
       text: options.message
     };
 
-    transport.sendMail(messageData, done);
+    setTimeout(function(){
+      transport.sendMail(messageData, done);
+    }, 15000);
   }
 
 };
