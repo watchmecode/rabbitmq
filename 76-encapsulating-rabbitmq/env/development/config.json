@@ -12,21 +12,7 @@
       "pass": "password",
       "server": "localhost",
       "vhost": "test-app"
-    },
-
-    "exchanges":[
-      {"name": "email.ex", "type": "direct"}
-    ],
-
-    "queues":[
-      {"name": "email.q"}
-    ],
-
-    "bindings":[{
-      "exchange": "email.ex", 
-      "target": "email.q", 
-      "keys": ["send"]
-    }]
+    }
   }
 
 }

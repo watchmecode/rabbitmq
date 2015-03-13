@@ -2,7 +2,7 @@ var express = require('express');
 var emailer = require("nodemailer");
 var epa = require("epa").getEnvironment();
 var mailer = require("mailer");
-var wascally = require("wascally");
+var SendEmail = require("../lib/sendEmail");
 
 var router = express.Router();
 
@@ -22,11 +22,8 @@ router.post("/send", function(req, res, next){
     from: from
   };
 
-  wascally.publish("email.ex", {
-    routingKey: "send",
-    type: "email.send",
-    body: emailInfo
-  });
+  var emailSender = new SendEmail();
+  emailSender.send(emailInfo);
   
   res.render("thank-you");
 });
