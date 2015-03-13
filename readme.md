@@ -8,10 +8,8 @@ The episodes include:
 * [Installing RabbitMQ on Windows 8](https://sub.watchmecode.net/rabbitmq-windows8/)
 * [Installing RabbitMQ on OSX](https://sub.watchmecode.net/rabbitmq-osx/)
 * [Installing RabbitMQ on Ubuntu](https://sub.watchmecode.net/rabbitmq-ubuntu/)
-
 * [RabbitMQ Management Basics](https://sub.watchmecode.net/rabbitmq-management/)
 * [RabbitMQ Exchange and Queue Basics](https://sub.watchmecode.net/rabbitmq-exchange-queue-basics/)
-
 * [RabbitMQ Send and Receive with amqplib](https://sub.watchmecode.net/rabbitmq-send-receive-amqplib/)
 * [RabbitMQ Send and Receive with wascally](https://sub.watchmecode.net/rabbitmq-send-receive-wascally/)
 
