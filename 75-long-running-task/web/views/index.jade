@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Derick's Contact Form
+  p Welcome to My Contact Form. Please fill this out and send me an email.
+  p &nbsp;
+  form(action="/send", method="post")
+    p
+      label Your Email:
+      br
+      input(type="email", name="from")
+    p
+      Label Subject:
+      br
+      input(name="subject")
+    p
+      label Message:
+      br
+      textarea(name="message", cols=75, rows=15)
+    p
+      button(type="submit") Send It!
