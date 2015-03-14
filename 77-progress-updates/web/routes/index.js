@@ -14,9 +14,11 @@ router.post("/", postJob);
 
 function view(req, res, next) {
   var inProgress = !!req.session.inProgress;
+  var progress = req.session.progress;
 
   res.render("index", {
-    inProgress: inProgress
+    inProgress: inProgress,
+    progress: progress
   });
 } 
 
@@ -29,7 +31,7 @@ function postJob(req, res, next){
 
   sendJobRequest(msg, function(err){
     if (err) { return next(err); }
-    res.render("index");
+    res.redirect("/");
   });
 }
 

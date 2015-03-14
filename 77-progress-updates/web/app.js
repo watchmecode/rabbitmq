@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var epa = require("epa").getEnvironment();
+var jobStatus = require("./lib/jobStatus");
 
 var routes = require('./routes/index');
 
@@ -16,6 +17,14 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+
+app.use(function(req, res, next){
+  req.session.progress = jobStatus.progress;
+  if (jobStatus.progress === 100){
+    req.session.inProgress = false;
+  }
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

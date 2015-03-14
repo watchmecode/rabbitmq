@@ -1,11 +1,12 @@
 var util = require("util");
 var Rabbus = require("rabbus");
+var wascally = require("wascally");
 
-function JobStatusSender(rabbus){
-  Rabbus.Sender.call(this, rabbus, {
-    exchange: "",
-    routingKey: "",
-    messageType: ""
+function JobStatusSender(){
+  Rabbus.Sender.call(this, wascally, {
+    exchange: "job",
+    routingKey: "job.status",
+    messageType: "job.status"
   });
 }
 

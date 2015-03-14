@@ -9,6 +9,7 @@ var debug = require('debug')('77-progress-updates:server');
 var http = require('http');
 var wascally = require("wascally");
 var epa = require("epa").getEnvironment();
+var jobStatus = require("../lib/jobStatus");
 
 /**
  * Get port from environment and store in Express.
@@ -31,12 +32,17 @@ var rabbitConfig = epa.get("rabbitmq");
 
 wascally
   .configure(rabbitConfig)
+  .then(listenForStatus)
   .then(function(){
     server.listen(port);
     server.on('error', onError);
     server.on('listening', onListening);
   })
   .then(undefined, onError);
+
+function listenForStatus(){
+  jobStatus.listen();
+}
 
 /**
  * Normalize a port into a number, string, or false.

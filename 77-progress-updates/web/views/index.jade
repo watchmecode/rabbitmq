@@ -5,6 +5,9 @@ block content
 
   - if (inProgress)
     p the work is in progress already
+    p
+      = progress
+      |%
   - else
     form(action="/", method="POST")
       button(type="submit") Start The Work!
