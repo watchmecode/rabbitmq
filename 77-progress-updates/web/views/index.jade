@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Do Some Work
+
+  - if (inProgress)
+    p the work is in progress already
+  - else
+    form(action="/", method="POST")
+      button(type="submit") Start The Work!
+  
