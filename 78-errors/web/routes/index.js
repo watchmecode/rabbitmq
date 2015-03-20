@@ -1,5 +1,8 @@
 var express = require("express");
+var uuid = require("node-uuid");
+
 var JobRequestSender = require("../lib/jobRequestSender");
+var jobStatus = require("../lib/jobStatus");
 
 // router
 // ------
@@ -13,19 +16,16 @@ router.post("/", postJob);
 // --------------
 
 function view(req, res, next) {
-  var inProgress = !!req.session.inProgress;
-  var progress = req.session.progress;
+  var progressList = jobStatus.progress;
 
   res.render("index", {
-    inProgress: inProgress,
-    progress: progress
+    progressList: progressList
   });
 } 
 
 function postJob(req, res, next){
-  req.session.inProgress = true;
-
   var msg = {
+    id: uuid.v1(),
     job: "do some work"
   };
 

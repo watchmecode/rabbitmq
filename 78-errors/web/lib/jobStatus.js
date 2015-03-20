@@ -1,12 +1,12 @@
 var JobStatusReceiver = require("./jobStatusReceiver");
 
 var jobStatus = {
-  progress: 0,
+  progress: {},
 
   listen: function(){
     var receiver = new JobStatusReceiver();
     receiver.receive(function(status, done){
-      jobStatus.progress = status.percent;
+      jobStatus.progress[status.id] = status;
       done();
     });
   }

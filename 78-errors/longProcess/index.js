@@ -36,20 +36,31 @@ function receiveRequests(){
   var jobRequestReceiver = new JobRequestReceiver();
 
   jobRequestReceiver.receive(function(request, done){
+    var progress = {
+      id: request.id,
+      percent: 0
+    };
+
     console.log("starting processing...");
     setTimeout(function(){
 
-      jobStatusSender.send({percent: 33});
       console.log("33% done");
+      progress.percent = 33;
+      jobStatusSender.send(progress);
 
       setTimeout(function(){
-        jobStatusSender.send({percent: 66});
+
         console.log("66% done");
+        progress.percent = 66;
+        jobStatusSender.send(progress);
 
         setTimeout(function(){
-          jobStatusSender.send({percent: 100});
+
           console.log("done processing");
+          progress.percent = 100;
+          jobStatusSender.send(progress);
           done();
+
         }, 5000);
 
       }, 5000);

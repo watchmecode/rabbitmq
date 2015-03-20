@@ -18,14 +18,6 @@ app.use(session({
   saveUninitialized: true
 }))
 
-app.use(function(req, res, next){
-  req.session.progress = jobStatus.progress;
-  if (jobStatus.progress === 100){
-    req.session.inProgress = false;
-  }
-  next();
-});
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
