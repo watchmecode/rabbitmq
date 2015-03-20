@@ -1,0 +1,14 @@
+{
+  "session": {
+    "key": "s9v8:JL#j;lk EFJ:L #ROi8djo#:LJKR ;asfdj;l"
+  },
+
+  "rabbitmq": {
+    "connection": {
+      "user": "test",
+      "pass": "password",
+      "server": "localhost",
+      "vhost": "test-app"
+    }
+  }
+}
